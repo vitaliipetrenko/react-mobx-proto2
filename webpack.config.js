@@ -4,6 +4,20 @@ var precss = require('precss')
 var autoprefixer = require('autoprefixer')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const query = {
+  bypassOnDebug: true,
+  optipng: {
+    optimizationLevel: 7
+  },
+  gifsicle: {
+    interlaced: false
+  },
+  pngquant: {
+    quality: '75-90',
+    speed: 3
+  }
+}
+
 module.exports = {
   entry: [
     'react-hot-loader/patch',
@@ -45,7 +59,7 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
           'file-loader?hash=sha512&digest=hex&name=assets/[hash].[ext]',
-          'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          `image-webpack-loader?${JSON.stringify(query)}`
         ]
       },
             { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },

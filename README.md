@@ -1,2 +1,3 @@
 # react-mobx-proto2
-react-mobx-proto2
+
+For run type: `yarn start`
